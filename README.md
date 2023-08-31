@@ -146,7 +146,9 @@ In addition to all topics in the single agent scenario, these topics are also av
 
 # RQT graph
 
-You can use rqt_graph command to open an rqt_graph session which will display all running nodes and the topics they share. Selection nodes and topic (all) on the drop down menu at the top
+You can use rqt_graph command to open an rqt_graph session which will display all running nodes and the topics they share. This is a nice tool to debug what might be wrong if some node fails and how it may affect the whole graph. Select 'Nodes/Topic (all)' on the drop down menu at the top. You should see an RQT graph similar to this
+
+![rqt_graph](https://github.com/f1tenth-cmu/f1tenth_gym_ros/assets/43860166/921cc83c-ee39-4e95-851d-efa7783f4d02)
 
 # Keyboard Teleop
 
