@@ -74,7 +74,7 @@ If your system does not support nvidia-docker2, noVNC will have to be used to fo
 ```bash
 docker-compose up
 ``` 
-3. In a separate terminal, run the following, and you'll have the a bash session in the simulation container. `tmux` is available for convenience.
+3. In a separate terminal, run the following, and you'll have the a bash session in the simulation container. `tmux` is available for convenience. Here is a little tutorial on using tmux for ubuntu : [Link](https://www.redhat.com/sysadmin/introduction-tmux-linux)
 ```bash
 docker exec -it f1tenth_gym_ros_sim_1 /bin/bash
 ```
@@ -143,6 +143,10 @@ In addition to all topics in the single agent scenario, these topics are also av
 `/opp_drive`: The opponent agent's drive command via `AckermannDriveStamped` messages. Note that you'll need to publish to **both** the ego's drive topic and the opponent's drive topic for the cars to move when using 2 agents.
 
 `/goal_pose`: This is the topic for resetting the opponent agent's pose via RViz's 2D Goal Pose tool. Do **NOT** publish directly to this topic unless you know what you're doing.
+
+# RQT graph
+
+You can use rqt_graph command to open an rqt_graph session which will display all running nodes and the topics they share. Selection nodes and topic (all) on the drop down menu at the top
 
 # Keyboard Teleop
 
