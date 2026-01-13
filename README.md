@@ -1,20 +1,38 @@
 # F1TENTH gym environment ROS2 communication bridge
 This is a containerized ROS communication bridge for the F1TENTH gym environment that turns it into a simulation in ROS2.
 
+# Table of Contents
+
+- [Installation](#installation)
+  - [Native on Ubuntu 22.04](#native-on-ubuntu-2004)
+  - [With an NVIDIA gpu](#with-an-nvidia-gpu)
+  - [Without an NVIDIA gpu Ubuntu 22.04 (**Recommended**)](#without-an-nvidia-gpu)
+- [Launching the Simulation](#launching-the-simulation)
+- [Configuring the simulation](#configuring-the-simulation)
+- [Topics published by the simulation](#topics-published-by-the-simulation)
+- [Topics subscribed by the simulation](#topics-subscribed-by-the-simulation)
+- [RQT graph](#rqt-graph)
+- [Keyboard Teleop](#keyboard-teleop)
+- [Developing and creating your own agent in ROS 2](#developing-and-creating-your-own-agent-in-ros-2)
+
+
 # Installation
 
 **Supported System:**
 
 - Ubuntu (tested on 20.04) native with ROS 2
 - Ubuntu (tested on 20.04) with an NVIDIA gpu and nvidia-docker2 support
+- Ubuntu (tested on 22.04) on MacOS with Docker running Ros2 Humble (S26)
 - Windows 10, macOS, and Ubuntu without an NVIDIA gpu (using noVNC)
 
 This installation guide will be split into instruction for installing the ROS 2 package natively, and for systems with or without an NVIDIA gpu in Docker containers.
 
-## Native on Ubuntu 20.04
+## Native on Ubuntu 22.04
+
+*Note previous iterations of this class used Ubuntu 20.04 and a previous ROS distribution (foxy-fitzroy). You can use 20.04, but may need to adapt the following commands to use ROS2 foxy. We recommend Ubuntu 22.04 and ROS2 humble-hawksbill for its many bug-fixes and active maintainence.*
 
 **Install the following dependencies:**
-- **ROS 2** Follow the instructions [here](https://docs.ros.org/en/foxy/Installation.html) to install ROS 2 Foxy.
+- **ROS 2** Follow the instructions [here](https://docs.ros.org/en/humble/Installation.html) to install ROS 2 Humble.
 - **F1TENTH Gym**
   ```bash
   git clone https://github.com/f1tenth/f1tenth_gym
@@ -27,14 +45,14 @@ This installation guide will be split into instruction for installing the ROS 2 
   ```bash
   cd $HOME/sim_ws/src
   git clone https://github.com/f1tenth/f1tenth_gym_ros
+  cd .. # go back to workspace root
   ```
 - Update correct parameter for path to map file:
   Go to `sim.yaml` [https://github.com/f1tenth/f1tenth_gym_ros/blob/main/config/sim.yaml](https://github.com/f1tenth/f1tenth_gym_ros/blob/main/config/sim.yaml) in your cloned repo, change the `map_path` parameter to point to the correct location. It should be `'<your_home_dir>/sim_ws/src/f1tenth_gym_ros/maps/levine'`
-- Install dependencies with rosdep:
+- From the workspace root (`sim_ws/`): Install dependencies with rosdep
   ```bash
-  source /opt/ros/foxy/setup.bash
-  cd ..
-  rosdep install -i --from-path src --rosdistro foxy -y
+  source /opt/ros/humble/setup.bash
+  rosdep install -i --from-path src --rosdistro humble -y
   ```
 - Build the workspace: ```colcon build```
 
@@ -59,7 +77,7 @@ $ docker build -t f1tenth_gym_ros -f Dockerfile .
 $ rocker --nvidia --x11 --volume .:/sim_ws/src/f1tenth_gym_ros -- f1tenth_gym_ros
 ```
 
-## Without an NVIDIA gpu:
+## Without an NVIDIA gpu (Ubuntu 22.04):
 
 **Install the following dependencies:**
 
@@ -83,6 +101,10 @@ docker-compose up
 docker exec -it f1tenth_gym_ros-sim-1 /bin/bash
 ```
 4. In your browser, navigate to [http://localhost:8080/vnc.html](http://localhost:8080/vnc.html), you should see the noVNC logo with the connect button. Click the connect button to connect to the session.
+
+> [!TIP]
+> Another easy-to-use method to connect to your running docker container is through VSCode. This can be done with the VSCode Dev Containers extension. \
+> See [vscode dev containers extension docs](https://code.visualstudio.com/docs/devcontainers/attach-container) for more info
 
 # Launching the Simulation
 
