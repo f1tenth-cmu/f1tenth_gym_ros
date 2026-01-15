@@ -6,7 +6,7 @@ This is a containerized ROS communication bridge for the F1TENTH gym environment
 - [Installation](#installation)
   - [Native on Ubuntu 22.04](#native-on-ubuntu-2004)
   - [With an NVIDIA gpu](#with-an-nvidia-gpu)
-  - [Without an NVIDIA gpu Ubuntu 22.04 (**Recommended**)](#without-an-nvidia-gpu)
+  - [Without an NVIDIA gpu Ubuntu 22.04 (**Recommended**)](#without-an-nvidia-gpu-ubuntu-2204)
 - [Launching the Simulation](#launching-the-simulation)
 - [Configuring the simulation](#configuring-the-simulation)
 - [Topics published by the simulation](#topics-published-by-the-simulation)
