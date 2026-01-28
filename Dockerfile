@@ -25,7 +25,7 @@ FROM ros:humble
 SHELL ["/bin/bash", "-c"]
 
 # dependencies
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key AD19BAB3CBF125EA
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key AD19BAB3CBF125EA
 RUN apt-get update --fix-missing && \
     apt-get install -y git \
                        nano \
