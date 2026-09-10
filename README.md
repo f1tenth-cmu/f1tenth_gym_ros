@@ -44,7 +44,7 @@ This installation guide will be split into instruction for installing the ROS 2 
 - Clone the repo into the workspace:
   ```bash
   cd $HOME/sim_ws/src
-  git clone https://github.com/f1tenth/f1tenth_gym_ros
+  git clone https://github.com/f1tenth-cmu/f1tenth_gym_ros
   cd .. # go back to workspace root
   ```
 - Update correct parameter for path to map file:
